@@ -43,12 +43,14 @@ from bot.helper_funcs.utils import(
         
 async def incoming_start_message_f(bot, update):
     """/start command"""
+    """
     if update.from_user.id not in AUTH_USERS:
         await bot.send_message(
             chat_id=update.chat.id,
             text="You are a Sudo User!",
             reply_to_message_id=update.message_id,
         )
+    """
 
     await bot.send_message(
         chat_id=update.chat.id,
