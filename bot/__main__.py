@@ -56,42 +56,42 @@ if __name__ == "__main__" :
     # START command
     incoming_start_message_handler = MessageHandler(
         incoming_start_message_f,
-        filters=Filters.command(["start", f"start@{BOT_USERNAME}"])
+        filters=filters.command(["start", f"start@{BOT_USERNAME}"])
     )
     app.add_handler(incoming_start_message_handler)
     
     # COMPRESS command
     incoming_compress_message_handler = MessageHandler(
         incoming_compress_message_f,
-        filters=Filters.command(["compress", f"compress@{BOT_USERNAME}"])
+        filters=filters.command(["compress", f"compress@{BOT_USERNAME}"])
     )
     app.add_handler(incoming_compress_message_handler)
     
     # CANCEL command
     incoming_cancel_message_handler = MessageHandler(
         incoming_cancel_message_f,
-        filters=Filters.command(["cancel", f"cancel@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["cancel", f"cancel@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(incoming_cancel_message_handler)
 
     # MEMEs COMMANDs
     exec_message_handler = MessageHandler(
         exec_message_f,
-        filters=Filters.command(["exec", f"exec@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["exec", f"exec@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(exec_message_handler)
     
     # HELP command
     help_text_handler = MessageHandler(
         help_message_f,
-        filters=Filters.command(["help", f"help@{BOT_USERNAME}"])
+        filters=filters.command(["help", f"help@{BOT_USERNAME}"])
     )
     app.add_handler(help_text_handler)
     
     # Telegram command to upload LOG files
     upload_log_f_handler = MessageHandler(
         upload_log_file,
-        filters=Filters.command(["log", f"log@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["log", f"log@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(upload_log_f_handler)
     
