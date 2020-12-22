@@ -17,7 +17,7 @@ logging.basicConfig(
 )
 LOGGER = logging.getLogger(__name__)
 
-from pyrogram import CallbackQuery
+from pyrogram.types import CallbackQuery
 #from bot.helper_funcs.admin_check import AdminCheck
 from bot import (
     AUTH_USERS,
