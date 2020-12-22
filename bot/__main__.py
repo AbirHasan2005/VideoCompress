@@ -70,14 +70,14 @@ if __name__ == "__main__" :
     # CANCEL command
     incoming_cancel_message_handler = MessageHandler(
         incoming_cancel_message_f,
-        filters=filters.command(["cancel", f"cancel@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["cancel", f"cancel@{BOT_USERNAME}"]) & filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(incoming_cancel_message_handler)
 
     # MEMEs COMMANDs
     exec_message_handler = MessageHandler(
         exec_message_f,
-        filters=filters.command(["exec", f"exec@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["exec", f"exec@{BOT_USERNAME}"]) & filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(exec_message_handler)
     
@@ -91,7 +91,7 @@ if __name__ == "__main__" :
     # Telegram command to upload LOG files
     upload_log_f_handler = MessageHandler(
         upload_log_file,
-        filters=filters.command(["log", f"log@{BOT_USERNAME}"]) & Filters.chat(chats=AUTH_USERS)
+        filters=filters.command(["log", f"log@{BOT_USERNAME}"]) & filters.chat(chats=AUTH_USERS)
     )
     app.add_handler(upload_log_f_handler)
     
