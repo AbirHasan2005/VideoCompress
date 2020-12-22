@@ -1,0 +1,55 @@
+{
+  "name": "VideoCompressBot",
+  "description": "Telegram's best Video Compress Bot",
+  "logo": "https://telegra.ph/file/b687febf32e4d583fb1d4.jpg",
+  "keywords": [
+    "telegram",
+    "best",
+    "video",
+    "compress",
+    "bot"
+  ],
+  "success_url": "https://t.me/linux_repo",
+  "website": "https://t.me/DX_Botz",
+  "repository": "https://github.com/AbirHasan2005/VidComBot",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable VARs when in ENV mode",
+      "value": "ANYTHING"
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Your bot token, as a string.",
+      "value": "",
+      "required": true
+    },
+    "APP_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": "",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": "",
+      "required": true
+    },
+    "AUTH_USERS": {
+      "description": "Allow only pre-defined users to use this bot as Sudo User.",
+      "value": "",
+      "required": true
+    },
+    "FINISHED_PROGRESS_STR": {
+      "description": "Should be a single character.",
+      "required": false
+    },
+    "UN_FINISHED_PROGRESS_STR": {
+      "description": "Should be a single character.",
+      "required": false
+    },
+    "BOT_USERNAME": {
+      "description": "Your Bot Username.",
+      "value": "",
+      "required": true
+    }
+  },
+  "stack": "container"
+}
