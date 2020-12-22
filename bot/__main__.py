@@ -18,19 +18,14 @@ from bot.plugins.new_join_fn import (
     help_message_f	
 )
 
-from pyrogram import (
-  Client, 
-  #Filters, 
-  MessageHandler,
-  CallbackQueryHandler
-)
+from pyrogram import Client, filters
+from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 
 from bot.plugins.incoming_message_fn import (
     incoming_start_message_f,
     incoming_compress_message_f,
     incoming_cancel_message_f
 )
-
 
 from bot.plugins.status_message_fn import (
     exec_message_f,
