@@ -44,7 +44,7 @@ from bot.helper_funcs.utils import(
 async def incoming_start_message_f(bot, update):
     """/start command"""
     if update.from_user.id not in AUTH_USERS:
-        await update.send_message("You are a Sudo User!")
+        await bot.send_message("You are a Sudo User!")
         #return
     # LOGGER.info(update)
     await bot.send_message(
