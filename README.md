@@ -1,5 +1,5 @@
 # VideoCompress
-A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo).
+A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **This bot works for all!** No need to define each user IDs to use bot. Also works in Group.
 
 ### Demo Bot:
 <a href="https://t.me/VidCom_Robot"><img src="https://img.shields.io/badge/Demo-Telegram%20Bot-blue.svg?logo=telegram"></a>
@@ -9,6 +9,13 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo).
 
 ### Support Group:
 <a href="https://t.me/linux_repo"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
+
+## Required Configs:
+* `TG_BOT_TOKEN` - Get this from [@BotFather](https://t.me/BotFather)
+* `BOT_USERNAME` - Your Bot's Username which you send to [@BotFather](https://t.me/BotFather) while creating Bot. ***(Without `@` Before Username!!)***
+* `APP_ID` - Get this from my.telegram.org
+* `API_HASH` - Get this from my.telegram.org
+* `AUTH_USERS` - Put your ID & other Sudo Users IDs. Separate with **Space**. Just for using ***Admin Commands***.
 
 ## Follow on:
 <p align="left">
@@ -24,3 +31,7 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo).
 <a href="https://instagram.com/AbirHasan2005"><img src="https://img.shields.io/badge/Instagram-Follow%20on%20Instagram-important.svg?logo=instagram"></a>
 </p>
 
+### Credits:
+* [Jijinr](https://github.com/Jijinr)
+* [SpEcHide](https://github.com/spechide)
+* [AbirHasan2005](https://github.com/AbirHasan2005)
