@@ -4,8 +4,6 @@
 
 # the logging things
 
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
 import logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -43,8 +41,8 @@ from bot.helper_funcs.utils import(
 async def incoming_start_message_f(bot, update):
     """/start command"""
     if update.from_user.id not in AUTH_USERS:
-        await update.message.delete()
-        return
+        await update.send_message("Hi, Sudo User!")
+        #return
     # LOGGER.info(update)
     await bot.send_message(
         chat_id=update.chat.id,
