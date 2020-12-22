@@ -64,14 +64,14 @@ async def incoming_start_message_f(bot, update):
     
 async def incoming_compress_message_f(bot, update):
   """/compress command"""
-"""
+
   if update.from_user.id not in AUTH_USERS:
     try:
       await update.message.delete()
     except:
       pass
     return
-"""
+
   if update.reply_to_message is None:
     try:
       await bot.send_message(
