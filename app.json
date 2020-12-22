@@ -10,15 +10,15 @@
     "bot"
   ],
   "success_url": "https://t.me/linux_repo",
-  "website": "https://t.me/DX_Botz",
-  "repository": "https://github.com/AbirHasan2005/VidComBot",
+  "website": "https://t.me/Discovery_Updates",
+  "repository": "https://github.com/AbirHasan2005/VideoCompress",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable VARs when in ENV mode",
       "value": "ANYTHING"
     },
     "TG_BOT_TOKEN": {
-      "description": "Your bot token, as a string.",
+      "description": "Your bot token, as a string. Get this from @BotFather",
       "value": "",
       "required": true
     },
@@ -33,9 +33,9 @@
       "required": true
     },
     "AUTH_USERS": {
-      "description": "Allow only pre-defined users to use this bot as Sudo User.",
-      "value": "",
-      "required": true
+      "description": "Allow only pre-defined users to use this bot as Sudo User. Separate with Space. Just for using Admin Commands.",
+      "value": "715779594 ",
+      "required": false
     },
     "FINISHED_PROGRESS_STR": {
       "description": "Should be a single character.",
@@ -46,7 +46,7 @@
       "required": false
     },
     "BOT_USERNAME": {
-      "description": "Your Bot Username.",
+      "description": "Your Bot Username. Without `@` before Username!",
       "value": "",
       "required": true
     }
