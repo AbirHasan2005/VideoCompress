@@ -253,9 +253,6 @@ async def incoming_compress_message_f(bot, update):
       uploaded_time = TimeFormatter((time.time() - u_start)*1000)
       await sent_message.delete()
       delete_downloads()
-      chat_id = LOG_CHANNEL
-      now = datetime.datetime.now()
-      await send_message(chat_id, f"**Process Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       LOGGER.info(upload.caption);
       try:
         await upload.edit_caption(
@@ -286,7 +283,10 @@ async def incoming_compress_message_f(bot, update):
       await send_message(chat_id, f"**Download Error, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     except:
       pass
-    
+  chat_id = LOG_CHANNEL
+  now = datetime.datetime.now()
+  await send_message(chat_id, f"**Process Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
+        
     
 async def incoming_cancel_message_f(bot, update):
   """/cancel command"""
