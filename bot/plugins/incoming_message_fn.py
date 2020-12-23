@@ -118,7 +118,7 @@ async def incoming_compress_message_f(bot, update):
     )
     chat_id = LOG_CHANNEL
     now = datetime.datetime.now()
-    await bot.send_message(chat_id, f"**Bot Become Busy !!** \n\nA Process Started at `{now}`", parse_mode="markdown")
+    await bot.send_message(chat_id, f"**Bot Become Busy Now !!** \n\nA Process Started at `{now}`", parse_mode="markdown")
     try:
       d_start = time.time()
       status = DOWNLOAD_LOCATION + "/status.json"
@@ -146,6 +146,9 @@ async def incoming_compress_message_f(bot, update):
           await sent_message.edit_text(
             text="Download stopped"
           )
+          chat_id = LOG_CHANNEL
+          now = datetime.datetime.now()
+          await send_message(chat_id, f"**Download Stopped, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
         except:
           pass
         delete_downloads()
@@ -184,6 +187,9 @@ async def incoming_compress_message_f(bot, update):
         await sent_message.edit_text(                
           text="⚠️ Getting video meta data failed ⚠️"                
         )
+        chat_id = LOG_CHANNEL
+        now = datetime.datetime.now()
+        await send_message(chat_id, f"**Download Failed, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       except:
           pass          
       delete_downloads()
@@ -237,6 +243,9 @@ async def incoming_compress_message_f(bot, update):
           await sent_message.edit_text(
             text="Upload stopped"
           )
+          chat_id = LOG_CHANNEL
+          now = datetime.datetime.now()
+          await send_message(chat_id, f"**Upload Stopped, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
         except:
           pass
         delete_downloads()
@@ -249,6 +258,9 @@ async def incoming_compress_message_f(bot, update):
         await upload.edit_caption(
           caption=upload.caption.replace('{}', uploaded_time)
         )
+        chat_id = LOG_CHANNEL
+        now = datetime.datetime.now()
+        await send_message(chat_id, f"**Upload Complete, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       except:
         pass
     else:
@@ -257,6 +269,9 @@ async def incoming_compress_message_f(bot, update):
         await sent_message.edit_text(                    
           text="⚠️ Compression failed ⚠️"               
         )
+        chat_id = LOG_CHANNEL
+        now = datetime.datetime.now()
+        await send_message(chat_id, f"**Compression Failed, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       except:
         pass
           
@@ -266,6 +281,9 @@ async def incoming_compress_message_f(bot, update):
       await sent_message.edit_text(                    
         text="⚠️ Failed Downloaded path not exist ⚠️"               
       )
+      chat_id = LOG_CHANNEL
+      now = datetime.datetime.now()
+      await send_message(chat_id, f"**Download Error, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     except:
       pass
     
@@ -275,6 +293,9 @@ async def incoming_cancel_message_f(bot, update):
   if update.from_user.id not in AUTH_USERS:
     try:
       await update.message.delete()
+      chat_id = LOG_CHANNEL
+      now = datetime.datetime.now()
+      await send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     except:
       pass
     return
