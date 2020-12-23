@@ -238,10 +238,6 @@ async def incoming_compress_message_f(bot, update):
           u_start
         )
       )
-      chat_id = LOG_CHANNEL
-      now = datetime.datetime.now()
-      await send_message(chat_id, f"**Process Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
-
       if(upload is None):
         try:
           await sent_message.edit_text(
@@ -257,6 +253,9 @@ async def incoming_compress_message_f(bot, update):
       uploaded_time = TimeFormatter((time.time() - u_start)*1000)
       await sent_message.delete()
       delete_downloads()
+      chat_id = LOG_CHANNEL
+      now = datetime.datetime.now()
+      await send_message(chat_id, f"**Process Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       LOGGER.info(upload.caption);
       try:
         await upload.edit_caption(
