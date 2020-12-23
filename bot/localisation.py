@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
+# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
+# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
+
 from bot.get_cfg import get_config
 
 
