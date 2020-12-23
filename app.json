@@ -34,7 +34,7 @@
     },
     "AUTH_USERS": {
       "description": "Allow only pre-defined users to use this bot as Sudo User. Separate with Space. Just for using Admin Commands.",
-      "value": "715779594 ",
+      "value": "715779594",
       "required": false
     },
     "FINISHED_PROGRESS_STR": {
@@ -49,7 +49,11 @@
       "description": "Your Bot Username. Without `@` before Username!",
       "value": "",
       "required": true
-    }
+    },
+    "LOG_CHANNEL": {
+      "description": "Your Bot's Log Channel's ID. For Help ask in @linux_repo",
+      "value": "",
+      "required": true
   },
   "stack": "container"
 }
