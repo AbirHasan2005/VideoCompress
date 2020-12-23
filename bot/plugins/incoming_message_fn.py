@@ -16,7 +16,8 @@ import os, time, asyncio, json
 from bot.localisation import Localisation
 from bot import (
   DOWNLOAD_LOCATION, 
-  AUTH_USERS
+  AUTH_USERS,
+  LOG_CHANNEL
 )
 from bot.helper_funcs.ffmpeg import (
   convert_video,
@@ -114,6 +115,9 @@ async def incoming_compress_message_f(bot, update):
       text=Localisation.DOWNLOAD_START,
       reply_to_message_id=update.message_id
     )
+    chat_id = LOG_CHANNEL
+    now = datetime.datetime.now()
+    await bot.send_message(chat_id, f"**Bot Become Busy !!** \n\nA Process Started at `{now}`", parse_mode="markdown")
     try:
       d_start = time.time()
       status = DOWNLOAD_LOCATION + "/status.json"
