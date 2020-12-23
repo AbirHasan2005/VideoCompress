@@ -263,6 +263,9 @@ async def incoming_compress_message_f(bot, update):
         await send_message(chat_id, f"**Upload Complete, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       except:
         pass
+        chat_id = LOG_CHANNEL
+        now = datetime.datetime.now()
+        await send_message(chat_id, f"**Upload Complete, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     else:
       delete_downloads()
       try:
