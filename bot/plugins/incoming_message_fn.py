@@ -165,6 +165,13 @@ async def incoming_compress_message_f(bot, update):
       await bot.send_message(
         chat_id=update.chat.id,
         text=Localisation.FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Show Bot Status', url='https://t.me/VideoCompressLogs') # Replace With Your's
+                ]
+            ]
+        ),
         reply_to_message_id=update.message_id
       )
     except:
