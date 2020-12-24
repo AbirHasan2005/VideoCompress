@@ -286,9 +286,6 @@ async def incoming_cancel_message_f(bot, update):
       await update.message.delete()
     except:
       pass
-      chat_id = LOG_CHANNEL
-      now = datetime.datetime.now()
-      await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     return
 
   status = DOWNLOAD_LOCATION + "/status.json"
@@ -300,6 +297,9 @@ async def incoming_cancel_message_f(bot, update):
     inline_keyboard.append(ikeyboard)
     reply_markup = InlineKeyboardMarkup(inline_keyboard)
     await update.reply_text("Are you sure? 🚫 This will stop the compression!", reply_markup=reply_markup, quote=True)
+    chat_id = LOG_CHANNEL
+    now = datetime.datetime.now()
+    await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
   else:
     delete_downloads()
     await bot.send_message(
