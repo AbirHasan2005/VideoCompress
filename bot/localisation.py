@@ -46,7 +46,7 @@ class Localisation:
     
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     
-    FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS = "⚠️ Already one Process going on! ⚠️ \n\nCheck Live Status on Updates Channel: @VideoCompressLogs"
+    FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS = "⚠️ Already one Process going on! ⚠️ \n\nCheck Live Status on Updates Channel." # Replace Channel Username With Your's in `/bot/plugins/incoming_message_fn.py`
     
     HELP_MESSAGE = get_config(
         "STRINGS_HELP_MESSAGE",
