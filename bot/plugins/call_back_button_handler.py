@@ -54,8 +54,6 @@ async def button(bot, update: CallbackQuery):
                         pass
                     try:
                         await update.message.edit_text("🚦🚦 Last Process Stopped 🚦🚦")
-			chat_id = update.from_user.id
-			await bot.send_message(chat_id, "Process Cancelled!")
                     except:
                         pass
             else:
