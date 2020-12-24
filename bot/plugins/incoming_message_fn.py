@@ -286,10 +286,10 @@ async def incoming_cancel_message_f(bot, update):
       await update.message.delete()
     except:
       pass
+      chat_id = LOG_CHANNEL
+      now = datetime.datetime.now()
+      await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     return
-  chat_id = LOG_CHANNEL
-  now = datetime.datetime.now()
-  await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
 
   status = DOWNLOAD_LOCATION + "/status.json"
   if os.path.exists(status):
