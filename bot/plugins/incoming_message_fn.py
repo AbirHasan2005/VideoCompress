@@ -45,14 +45,6 @@ from bot.helper_funcs.utils import(
         
 async def incoming_start_message_f(bot, update):
     """/start command"""
-    """
-    if update.from_user.id not in AUTH_USERS:
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text="You are a Sudo User!",
-            reply_to_message_id=update.message_id,
-        )
-    """
 
     await bot.send_message(
         chat_id=update.chat.id,
@@ -292,12 +284,12 @@ async def incoming_cancel_message_f(bot, update):
   if update.from_user.id not in AUTH_USERS:
     try:
       await update.message.delete()
-      chat_id = LOG_CHANNEL
-      now = datetime.datetime.now()
-      await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
     except:
       pass
     return
+  chat_id = LOG_CHANNEL
+  now = datetime.datetime.now()
+  await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
 
   status = DOWNLOAD_LOCATION + "/status.json"
   if os.path.exists(status):
