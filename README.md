@@ -26,7 +26,7 @@ Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channe
 * `COMMAND_EXEC` - `/exec` Command Handler.
 * `COMMAND_STATUS` - `/status` Command Handler.
 * `COMMAND_CANCEL` - `/cancel` Command Handler.
-* `COMMAND_COMPRESS` - `compress` Command Handler.
+* `COMMAND_COMPRESS` - `/compress` Command Handler.
 * `COMMAND_START` - `/start` Command Handler.
 * `COMMAND_HELP` - `/help` Command Handler
 
