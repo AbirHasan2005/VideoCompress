@@ -23,6 +23,12 @@ Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channe
 * `APP_ID` - Get this from my.telegram.org
 * `API_HASH` - Get this from my.telegram.org
 * `AUTH_USERS` - Put your ID & other Sudo Users IDs. Separate with **Space**. Just for using ***Admin Commands***.
+* `COMMAND_EXEC` - `/exec` Command Handler.
+* `COMMAND_STATUS` - `/status` Command Handler.
+* `COMMAND_CANCEL` - `/cancel` Command Handler.
+* `COMMAND_COMPRESS` - `compress` Command Handler.
+* `COMMAND_START` - `/start` Command Handler.
+* `COMMAND_HELP` - `/help` Command Handler
 
 ## Follow on:
 <p align="left">
