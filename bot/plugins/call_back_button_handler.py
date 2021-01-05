@@ -17,11 +17,13 @@ logging.basicConfig(
 )
 LOGGER = logging.getLogger(__name__)
 
+import datetime
 from pyrogram.types import CallbackQuery
 #from bot.helper_funcs.admin_check import AdminCheck
 from bot import (
     AUTH_USERS,
-    DOWNLOAD_LOCATION
+    DOWNLOAD_LOCATION,
+    LOG_CHANNEL
 )
 
 async def button(bot, update: CallbackQuery):
@@ -54,6 +56,9 @@ async def button(bot, update: CallbackQuery):
                         pass
                     try:
                         await update.message.edit_text("🚦🚦 Last Process Stopped 🚦🚦")
+                        chat_id = LOG_CHANNEL
+                        now = datetime.datetime.now()
+                        await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
                     except:
                         pass
             else:
