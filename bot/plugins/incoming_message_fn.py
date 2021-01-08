@@ -46,12 +46,12 @@ async def incoming_start_message_f(bot, update):
     update_channel = UPDATES_CHANNEL
     if update_channel:
         try:
-            user = await client.get_chat_member(update_channel, message.chat.id)
+            user = await update.get_chat_member(update_channel, message.chat.id)
             if user.status == "kicked":
-               await message.reply_text("Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+               await bot.reply_text("Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
                return
         except UserNotParticipant:
-            await message.reply_text(
+            await bot.reply_text(
                 text="**Please Join My Updates Channel to use this Bot!**",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -63,7 +63,7 @@ async def incoming_start_message_f(bot, update):
             )
             return
         except Exception:
-            await message.reply_text("Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+            await bot.reply_text("Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
             return
     await bot.send_message(
         chat_id=update.chat.id,
@@ -86,12 +86,12 @@ async def incoming_compress_message_f(bot, update):
   update_channel = UPDATES_CHANNEL
   if update_channel:
       try:
-          user = await client.get_chat_member(update_channel, message.chat.id)
+          user = await update.get_chat_member(update_channel, message.chat.id)
           if user.status == "kicked":
-             await message.reply_text("Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+             await bot.reply_text("Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
              return
       except UserNotParticipant:
-          await message.reply_text(
+          await bot.reply_text(
               text="**Please Join My Updates Channel to use this Bot!**",
               reply_markup=InlineKeyboardMarkup(
                   [
@@ -103,7 +103,7 @@ async def incoming_compress_message_f(bot, update):
           )
           return
       except Exception:
-          await message.reply_text("Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+          await bot.reply_text("Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
           return
   if update.reply_to_message is None:
     try:
