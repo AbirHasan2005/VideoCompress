@@ -54,6 +54,11 @@
       "description": "Your Bot's Log Channel's ID. For Help ask in @linux_repo",
       "value": "",
       "required": true
+    },
+    "UPDATES_CHANNEL": {
+      "description": "Do Force Sub! Add your Channel username or ID which you want to do Force Sub. Read README.md file first!",
+      "value": "",
+      "required": true
     }
   },
   "stack": "container"
