@@ -7,7 +7,8 @@ from bot.localisation import Localisation
 from bot import (
     UPDATES_CHANNEL
 )
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton, Message
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 
 async def new_join_f(client, message):
     # delete all other messages, except for AUTH_USERS
