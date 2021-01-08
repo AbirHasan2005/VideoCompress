@@ -4,6 +4,9 @@
 
 
 from bot.localisation import Localisation
+from bot import (
+    UPDATES_CHANNEL
+)
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 async def new_join_f(client, message):
@@ -23,7 +26,30 @@ async def new_join_f(client, message):
 
 
 async def help_message_f(client, message):
-    # display the /help message
+    ## Force Sub ##
+    update_channel = UPDATES_CHANNEL
+    if update_channel:
+        try:
+            user = await client.get_chat_member(update_channel, message.chat.id)
+            if user.status == "kicked":
+               await message.reply_text("Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+               return
+        except UserNotParticipant:
+            await message.reply_text(
+                text="**Please Join My Updates Channel to use this Bot!**",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
+                        ]
+                    ]
+                )
+            )
+            return
+        except Exception:
+            await message.reply_text("Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+            return
+    ## Force Sub ##
     await message.reply_text(
         Localisation.HELP_MESSAGE,
         reply_markup=InlineKeyboardMarkup(
