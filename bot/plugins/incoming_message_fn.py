@@ -32,13 +32,10 @@ from bot.helper_funcs.display_progress import (
   humanbytes
 )
 
-from pyrogram.types import (
-  InlineKeyboardButton,
-  InlineKeyboardMarkup
-)
-
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
+from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
 
 from bot.helper_funcs.utils import(
   delete_downloads
