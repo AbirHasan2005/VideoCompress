@@ -63,9 +63,9 @@ async def incoming_start_message_f(bot, update):
                 )
             )
             return
-        except Exception:
-            await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
-            return
+        #except Exception:
+            #await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+            #return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Localisation.START_TEXT,
