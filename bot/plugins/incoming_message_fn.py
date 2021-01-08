@@ -46,7 +46,7 @@ async def incoming_start_message_f(bot, update):
     update_channel = UPDATES_CHANNEL
     if update_channel:
         try:
-            user = await bot.get_chat_member(update_channel, message.chat.id)
+            user = await bot.get_chat_member(update_channel, update.chat.id)
             if user.status == "kicked":
                await bot.send_message(chat_id=update.chat.id, text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
                return
@@ -87,7 +87,7 @@ async def incoming_compress_message_f(bot, update):
   update_channel = UPDATES_CHANNEL
   if update_channel:
       try:
-          user = await update.get_chat_member(update_channel, message.chat.id)
+          user = await update.get_chat_member(update_channel, update.chat.id)
           if user.status == "kicked":
              await bot.send_message(chat_id=update.chat.id, text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
              return
