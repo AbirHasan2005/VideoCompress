@@ -48,7 +48,7 @@ async def incoming_start_message_f(bot, update):
         try:
             user = await bot.get_chat_member(update_channel, update.chat.id)
             if user.status == "kicked":
-               await update.reply_text(
+               await bot.send_message(
                    chat_id=update.chat.id,
                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
                    parse_mode="markdown",
@@ -70,7 +70,11 @@ async def incoming_start_message_f(bot, update):
             )
             return
         except Exception:
-            await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown", disable_web_page_preview=True)
+            await bot.send_message(
+                chat_id=update.chat.id,
+                text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+                parse_mode="markdown",
+                disable_web_page_preview=True)
             return
     await bot.send_message(
         chat_id=update.chat.id,
@@ -95,10 +99,16 @@ async def incoming_compress_message_f(bot, update):
       try:
           user = await update.get_chat_member(update_channel, update.chat.id)
           if user.status == "kicked":
-             await bot.send_message(chat_id=update.chat.id, text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+             await bot.send_message(
+                 chat_id=update.chat.id,
+                 text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+                 parse_mode="markdown",
+                 disable_web_page_preview=True
+             )
              return
       except UserNotParticipant:
-          await message.reply_text(
+          await bot.send_message(
+              chat_id=update.chat.id,
               text="**Please Join My Updates Channel to use this Bot!**",
               reply_markup=InlineKeyboardMarkup(
                   [
@@ -106,11 +116,17 @@ async def incoming_compress_message_f(bot, update):
                           InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
                       ]
                   ]
-              )
+              ),
+              parse_mode="markdown"
           )
           return
       except Exception:
-          await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+          await bot.send_message(
+              chat_id=update.chat.id,
+              text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+              parse_mode="markdown",
+              disable_web_page_preview=True
+          )
           return
   if update.reply_to_message is None:
     try:
