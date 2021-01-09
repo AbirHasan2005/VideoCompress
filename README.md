@@ -18,12 +18,12 @@ Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channe
 
 ## Required Configs:
 * `TG_BOT_TOKEN` - Get this from [@BotFather](https://t.me/BotFather)
-* `LOG_CHANNEL` - Put Your Bot's Logs Channel's ID. For Help ask in [Support Group](https://t.me/linux_repo).
+* `LOG_CHANNEL` - Put Your Bot's Logs Channel's Username. For Help ask in [Support Group](https://t.me/linux_repo).
 * `BOT_USERNAME` - Your Bot's Username which you send to [@BotFather](https://t.me/BotFather) while creating Bot. ***(Without `@` Before Username!!)***
 * `APP_ID` - Get this from my.telegram.org
 * `API_HASH` - Get this from my.telegram.org
 * `AUTH_USERS` - Put your ID & other Sudo Users IDs. Separate with **Space**. Just for using ***Admin Commands***.
-* `UPDATES_CHANNEL` - Put your Channel Username or Channel ID which you want to do Force Sub. But bot should be Admin in that channel. If got any error or not understand anything than ask in [Support Group](https://t.me/linux_repo).
+* `UPDATES_CHANNEL` - Put your Channel Username which you want to do Force Sub. But bot should be Admin in that channel. If got any error or not understand anything than ask in [Support Group](https://t.me/linux_repo).
 
 ## Optional Configs:
 * `COMMAND_EXEC` - `/exec` Command Handler.
