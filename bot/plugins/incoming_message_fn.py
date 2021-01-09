@@ -51,7 +51,8 @@ async def incoming_start_message_f(bot, update):
                await update.reply_text(
                    chat_id=update.chat.id,
                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                   parse_mode="markdown"
+                   parse_mode="markdown",
+                   disable_web_page_preview=True
                )
                return
         except UserNotParticipant:
@@ -64,12 +65,13 @@ async def incoming_start_message_f(bot, update):
                             InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
                         ]
                     ]
-                )
+                ),
+                parse_mode="markdown"
             )
             return
-        #except Exception:
-            #await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
-            #return
+        except Exception:
+            await bot.send_message(chat_id=update.chat.id, text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown", disable_web_page_preview=True)
+            return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Localisation.START_TEXT,
