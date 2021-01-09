@@ -120,14 +120,14 @@ async def incoming_compress_message_f(bot, update):
               parse_mode="markdown"
           )
           return
-      except Exception:
-          await bot.send_message(
-              chat_id=update.chat.id,
-              text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
-              parse_mode="markdown",
-              disable_web_page_preview=True
-          )
-          return
+      #except Exception:
+          #await bot.send_message(
+              #chat_id=update.chat.id,
+              #text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+              #parse_mode="markdown",
+              #disable_web_page_preview=True
+          #)
+          #return
   if update.reply_to_message is None:
     try:
       await bot.send_message(
