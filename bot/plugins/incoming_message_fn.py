@@ -48,7 +48,11 @@ async def incoming_start_message_f(bot, update):
         try:
             user = await bot.get_chat_member(update_channel, update.chat.id)
             if user.status == "kicked":
-               await bot.send_message(chat_id=update.chat.id, text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).", parse_mode="markdown")
+               await update.reply_text(
+                   chat_id=update.chat.id,
+                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+                   parse_mode="markdown"
+               )
                return
         except UserNotParticipant:
             await bot.send_message(
