@@ -283,6 +283,10 @@ async def incoming_compress_message_f(bot, update):
     if o == 'stopped':
       return
     if o is not None:
+      chat_id = LOG_CHANNEL
+      now = datetime.datetime.now()
+      await compress_start.delete()
+      upload_start = await bot.send_message(chat_id, f"**Uploading Video ...** \n\nProcess Started at `{now}`", parse_mode="markdown")
       await sent_message.edit_text(                    
         text=Localisation.UPLOAD_START,                    
       )
@@ -321,7 +325,7 @@ async def incoming_compress_message_f(bot, update):
       delete_downloads()
       chat_id = LOG_CHANNEL
       now = datetime.datetime.now()
-      await compress_start.delete()
+      await upload_start.delete()
       await bot.send_message(chat_id, f"**Upload Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       LOGGER.info(upload.caption);
       try:
