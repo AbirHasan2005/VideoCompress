@@ -173,7 +173,7 @@ async def incoming_compress_message_f(bot, update):
     )
     chat_id = LOG_CHANNEL
     now = datetime.datetime.now()
-    await bot.send_message(chat_id, f"**Bot Become Busy Now !!** \n\nA Process Started at `{now}`", parse_mode="markdown")
+    download_start = await bot.send_message(chat_id, f"**Bot Become Busy Now !!** \n\nDownload Started at `{now}`", parse_mode="markdown")
     try:
       d_start = time.time()
       status = DOWNLOAD_LOCATION + "/status.json"
@@ -261,6 +261,10 @@ async def incoming_compress_message_f(bot, update):
       os.path.dirname(os.path.abspath(saved_file_path)),
       (duration / 2)
     )
+    chat_id = LOG_CHANNEL
+    now = datetime.datetime.now()
+    await download_start.delete()
+    compress_start = await bot.send_message(chat_id, f"**Compressing Video ...** \n\nProcess Started at `{now}`", parse_mode="markdown")
     await sent_message.edit_text(                    
       text=Localisation.COMPRESS_START                    
     )
@@ -317,6 +321,7 @@ async def incoming_compress_message_f(bot, update):
       delete_downloads()
       chat_id = LOG_CHANNEL
       now = datetime.datetime.now()
+      await compress_start.delete()
       await bot.send_message(chat_id, f"**Upload Done, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
       LOGGER.info(upload.caption);
       try:
@@ -367,9 +372,6 @@ async def incoming_cancel_message_f(bot, update):
     inline_keyboard.append(ikeyboard)
     reply_markup = InlineKeyboardMarkup(inline_keyboard)
     await update.reply_text("Are you sure? 🚫 This will stop the compression!", reply_markup=reply_markup, quote=True)
-    #chat_id = LOG_CHANNEL
-    #now = datetime.datetime.now()
-    #await bot.send_message(chat_id, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
   else:
     delete_downloads()
     await bot.send_message(
