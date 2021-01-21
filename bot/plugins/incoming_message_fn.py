@@ -50,7 +50,7 @@ async def incoming_start_message_f(bot, update):
             if user.status == "kicked":
                await bot.send_message(
                    chat_id=update.chat.id,
-                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+                   text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/naija_bestz).",
                    parse_mode="markdown",
                    disable_web_page_preview=True
                )
@@ -72,7 +72,7 @@ async def incoming_start_message_f(bot, update):
         except Exception:
             await bot.send_message(
                 chat_id=update.chat.id,
-                text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+                text="Something went Wrong. Contact my [Support Group](https://t.me/naija_bestz).",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
@@ -82,10 +82,10 @@ async def incoming_start_message_f(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Updates Channel', url='https://t.me/Discovery_Updates')
+                    InlineKeyboardButton('Updates Channel', url='https://t.me/BestzBotUpdate')
                 ],
                 [
-                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                    InlineKeyboardButton('Support Group', url='https://t.me/naija_bestz')
                 ]
             ]
         ),
@@ -101,7 +101,7 @@ async def incoming_compress_message_f(bot, update):
           if user.status == "kicked":
              await bot.send_message(
                  chat_id=update.chat.id,
-                 text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+                 text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://naija_bestz).",
                  parse_mode="markdown",
                  disable_web_page_preview=True
              )
@@ -123,7 +123,7 @@ async def incoming_compress_message_f(bot, update):
       except Exception:
           await bot.send_message(
               chat_id=update.chat.id,
-              text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
+              text="Something went Wrong. Contact my [Support Group](https://t.me/naija_bestz).",
               parse_mode="markdown",
               disable_web_page_preview=True
           )
@@ -242,7 +242,7 @@ async def incoming_compress_message_f(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Show Bot Status', url='https://t.me/VideoCompressLogs') # Replace With Your's
+                    InlineKeyboardButton('Show Bot Status', url='https://t.me/joinchat/T-oxP5V9a8Km-8IM') # Replace With Your's
                 ]
             ]
         ),
