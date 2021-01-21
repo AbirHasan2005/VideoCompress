@@ -9,7 +9,7 @@ from bot.get_cfg import get_config
 
 
 class Localisation:
-    START_TEXT = "Hello, \n\nThis is a Telegram <b>Video Compress Bot</b>. \n\n<b>Please sent me any Telegram big file I will compress it as s small file!</b> \n\n/help for more details. \n\nSupport Group: @Linux_Repo"
+    START_TEXT = "Hello, \n\nThis is a Telegram <b>Video Compress Bot</b>. \n\n<b>Please sent me any Telegram big file I will compress it as s small file!</b> \n\n/help for more details. \n\nSupport Group: @naija_bestz"
    
     ABS_TEXT = " Please don't be selfish."
     
