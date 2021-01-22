@@ -242,7 +242,7 @@ async def incoming_compress_message_f(bot, update):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Show Bot Status', url='https://t.me/joinchat/allbestzlog') # Replace With Your's
+                    InlineKeyboardButton('Show Bot Status', url='https://t.me/allbestzlog') # Replace With Your's
                 ]
             ]
         ),
