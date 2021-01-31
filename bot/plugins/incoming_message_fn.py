@@ -138,26 +138,6 @@ async def incoming_compress_message_f(bot, update):
     except:
       pass
     return
-  target_percentage = 50
-  isAuto = False
-  if len(update.command) > 1:
-    try:
-      if int(update.command[1]) <= 90 and int(update.command[1]) >= 10:
-        target_percentage = int(update.command[1])
-      else:
-        try:
-          await bot.send_message(
-            chat_id=update.chat.id,
-            text="🤬 Value should be 10 to 90",
-            reply_to_message_id=update.message_id
-          )
-          return
-        except:
-          pass
-    except:
-      pass
-  else:
-    isAuto = True
   user_file = str(update.from_user.id) + ".FFMpegRoBot.mkv"
   saved_file_path = DOWNLOAD_LOCATION + "/" + user_file
   LOGGER.info(saved_file_path)
@@ -297,8 +277,7 @@ async def incoming_compress_message_f(bot, update):
            duration, 
            bot, 
            sent_message, 
-           target_percentage, 
-           isAuto
+           compress_start
          )
     compressed_time = TimeFormatter((time.time() - c_start)*1000)
     LOGGER.info(o)
