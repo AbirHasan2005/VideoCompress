@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
-# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
-# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
-# Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
+# (c) @AbirHasan2005
 
 from bot.get_cfg import get_config
 
 
 class Localisation:
-    START_TEXT = "Hello, \n\nThis is a Telegram <b>Video Compress Bot</b>. \n\n<b>Please sent me any Telegram big file I will compress it as s small file!</b> \n\n/help for more details. \n\nSupport Group: @Linux_Repo"
+    START_TEXT = "Hello, \n\nThis is a Telegram <b>Video Compress HEVC Bot</b>. \n\n<b>Please send me any Telegram big video file I will compress it as s small video file without losing video quality as HEVC Video!</b> \n\n/help for more details. \n\nSupport Group: @Linux_Repo"
    
     ABS_TEXT = " Please don't be selfish."
     
@@ -46,11 +43,11 @@ class Localisation:
     
     USER_ADDED_TO_DB = "User <a href='tg://user?id={}'>{}</a> added to {} till {}."
     
-    FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS = "⚠️ Already one Process going on! ⚠️ \n\nCheck Live Status on Updates Channel." # Replace Channel Username With Your's in `/bot/plugins/incoming_message_fn.py`
+    FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS = "⚠️ Already one Process going on! ⚠️ \n\nCheck Live Status on Updates Channel."
     
     HELP_MESSAGE = get_config(
         "STRINGS_HELP_MESSAGE",
-        "Hi, I am Video Compressor Bot \n\n1. Send me your telegram big video file \n2. Reply the file - /compress And Persentage \nEg: <code>/compress 50</code> \n\nSupport Group: @Linux_Repo"
+        "Hi, I am Video Compressor HEVC Bot \n\n1. Send me your telegram big video file \n2. Reply to the file with: /compress \n\nSupport Group: @Linux_Repo"
     )
     WRONG_MESSAGE = get_config(
         "STRINGS_WRONG_MESSAGE",
