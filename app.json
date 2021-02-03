@@ -17,6 +17,16 @@
       "description": "Setting this to ANYTHING will enable VARs when in ENV mode",
       "value": "ANYTHING"
     },
+    "SESSION_NAME": {
+      "description": "Keep this default",
+      "value": "AHCompressBot",
+      "required": true
+    },
+    "DATABASE_URL": {
+      "description": "Your MongoDB URL for Database. Ask in Support Group: https://t.me/linux_repo",
+      "value": "",
+      "required": true
+    },
     "TG_BOT_TOKEN": {
       "description": "Your bot token, as a string. Get this from @BotFather",
       "value": "",
