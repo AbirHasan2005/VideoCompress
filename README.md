@@ -8,6 +8,8 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 	- Can Broadcast messages
 	- Can Ban-Unban Manually
 	- Can see numbers users in DB
+- Bot will compress as HEVC
+        - Video Quality will not lose much in this mode
 
 * If you need more help to Deploy Feel Free to ask in [Support Group](https://t.me/linux_repo).
 
@@ -41,6 +43,24 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 * `COMMAND_COMPRESS` - `/compress` Command Handler.
 * `COMMAND_START` - `/start` Command Handler.
 * `COMMAND_HELP` - `/help` Command Handler
+
+### Public Commands:
+```
+start - Start Bot
+compress - Compress Video
+help - How to Use Bot
+```
+
+### Admin Commands:
+```
+cancel - Cancel Last Process
+status - Total User Number in Database
+broadcast - Reply to Message to Broadcast
+ban_user - Ban A User with time & reason
+unban_user - Unban a User
+banned_users - Show Banned Users
+exec - EXEC 🙄
+```
 
 ## Follow on:
 <p align="left">
