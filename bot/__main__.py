@@ -12,7 +12,9 @@ from bot import (
     DOWNLOAD_LOCATION,
     LOGGER,
     TG_BOT_TOKEN,
-    BOT_USERNAME
+    BOT_USERNAME,
+    SESSION_NAME,
+    DATABASE_URL
 )
 from bot.plugins.new_join_fn import (	
     help_message_f	
@@ -25,6 +27,17 @@ from bot.plugins.incoming_message_fn import (
     incoming_start_message_f,
     incoming_compress_message_f,
     incoming_cancel_message_f
+)
+
+from bot.plugins.admin import (
+    sts,
+    ban,
+    unban,
+    _banned_usrs
+)
+
+from bot.plugins.broadcast import (
+    broadcast_
 )
 
 from bot.plugins.status_message_fn import (
@@ -40,11 +53,9 @@ if __name__ == "__main__" :
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
     #
-    sessions = "/app/sessions"
-    if not os.path.isdir(sessions):
-        os.makedirs(sessions)
+    
     app = Client(
-        "SGVideoCompressBot",
+        SESSION_NAME,
         bot_token=TG_BOT_TOKEN,
         api_id=APP_ID,
         api_hash=API_HASH,
@@ -53,6 +64,41 @@ if __name__ == "__main__" :
     #
     app.set_parse_mode("html")
     #
+    # STATUS ADMIN Command
+    incoming_status_command = MessageHandler(
+        sts,
+        filters=filters.command(["status"]) & filters.user(AUTH_USERS)
+    )
+    app.add_handler(incoming_status_command)
+
+    # BAN Admin Command
+    incoming_ban_command = MessageHandler(
+        ban,
+        filters=filters.command(["ban_user"]) & filters.user(AUTH_USERS)
+    )
+    app.add_handler(incoming_ban_command)
+
+    # UNBAN Admin Command
+    incoming_unban_command = MessageHandler(
+        unban,
+        filters=filters.command(["unban_user"]) & filters.user(AUTH_USERS)
+    )
+    app.add_handler(incoming_unban_command)
+
+    # BANNED_USERS Admin Command
+    incoming_banned_command = MessageHandler(
+        _banned_usrs,
+        filters=filters.command(["banned_users"]) & filters.user(AUTH_USERS) & filters.reply
+    )
+    app.add_handler(incoming_banned_command)
+
+    # BROADCAST Admin Command
+    incoming_broadcast_command = MessageHandler(
+        broadcast_,
+        filters=filters.command(["broadcast"])
+    )
+    app.add_handler(incoming_broadcast_command)
+    
     # START command
     incoming_start_message_handler = MessageHandler(
         incoming_start_message_f,
