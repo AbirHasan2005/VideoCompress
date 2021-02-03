@@ -42,6 +42,24 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 * `COMMAND_START` - `/start` Command Handler.
 * `COMMAND_HELP` - `/help` Command Handler
 
+### Public Commands:
+```
+start - Start Bot
+compress - Compress Video
+help - How to Use Bot
+```
+
+### Admin Commands:
+```
+cancel - Cancel Last Process
+status - Total User Number in Database
+broadcast - Reply to Message to Broadcast
+ban_user - Ban A User with time & reason
+unban_user - Unban a User
+banned_users - Show Banned Users
+exec - EXEC 🙄
+```
+
 ## Follow on:
 <p align="left">
 <a href="https://github.com/AbirHasan2005"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
