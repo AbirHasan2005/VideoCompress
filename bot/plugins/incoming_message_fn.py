@@ -15,11 +15,14 @@ LOGGER = logging.getLogger(__name__)
 
 import os, time, asyncio, json
 from bot.localisation import Localisation
+from bot.database import Database
 from bot import (
   DOWNLOAD_LOCATION, 
   AUTH_USERS,
   LOG_CHANNEL,
-  UPDATES_CHANNEL
+  UPDATES_CHANNEL,
+  DATABASE_URL,
+  SESSION_NAME
 )
 from bot.helper_funcs.ffmpeg import (
   convert_video,
@@ -40,9 +43,16 @@ from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, Usern
 from bot.helper_funcs.utils import(
   delete_downloads
 )
+
+db = Database(DATABASE_URL, SESSION_NAME)
+CURRENT_PROCESSES = {}
+CHAT_FLOOD = {}
+broadcast_ids = {}
         
 async def incoming_start_message_f(bot, update):
     """/start command"""
+    if not await db.is_user_exist(message.chat.id):
+        await db.add_user(message.chat.id)
     update_channel = UPDATES_CHANNEL
     if update_channel:
         try:
@@ -94,6 +104,8 @@ async def incoming_start_message_f(bot, update):
     
 async def incoming_compress_message_f(bot, update):
   """/compress command"""
+  if not await db.is_user_exist(message.chat.id):
+      await db.add_user(message.chat.id)
   update_channel = UPDATES_CHANNEL
   if update_channel:
       try:

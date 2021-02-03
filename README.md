@@ -2,10 +2,14 @@
 A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **This bot works for all!** No need to define each user IDs to use bot. Also works in Group.
 
 ### Special Features:
-Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channel ID in `LOG_CHANNEL` Var & Add your bot to that channel as Admin with **Post Messages** Right. If you need more help to Deploy Feel Free to ask in [Support Group](https://t.me/linux_repo).
+- Bot's Live Status on Channel
+- Force Sub to Channel
+- Database:
+	- Can Broadcast messages
+	- Can Ban-Unban Manually
+	- Can see numbers users in DB
 
-- Bot will compress as HEVC
-  - Thanks to [Mr. Vishal](https://github.com/Mrvishal2k2) for Codes!
+* If you need more help to Deploy Feel Free to ask in [Support Group](https://t.me/linux_repo).
 
 ### Demo Bot:
 <a href="https://t.me/VidCom_Robot"><img src="https://img.shields.io/badge/Demo-Telegram%20Bot-blue.svg?logo=telegram"></a>
@@ -20,11 +24,13 @@ Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channe
 <a href="https://t.me/linux_repo"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
 
 ## Required Configs:
+* `SESSION_NAME` - Any name of session. Better keep default.
 * `TG_BOT_TOKEN` - Get this from [@BotFather](https://t.me/BotFather)
 * `LOG_CHANNEL` - Put Your Bot's Logs Channel's Username. For Help ask in [Support Group](https://t.me/linux_repo).
 * `BOT_USERNAME` - Your Bot's Username which you send to [@BotFather](https://t.me/BotFather) while creating Bot. ***(Without `@` Before Username!!)***
 * `APP_ID` - Get this from my.telegram.org
 * `API_HASH` - Get this from my.telegram.org
+* `DATABASE_URL` - Your MongoDB Database URL.
 * `AUTH_USERS` - Put your ID & other Sudo Users IDs. Separate with **Space**. Just for using ***Admin Commands***.
 * `UPDATES_CHANNEL` - Put your Channel Username which you want to do Force Sub. But bot should be Admin in that channel. If got any error or not understand anything than ask in [Support Group](https://t.me/linux_repo).
 
@@ -53,5 +59,4 @@ Bot can send his Live Status on Your Telegram Logs Channel! Just put your Channe
 ### Credits:
 * [Jijinr](https://github.com/Jijinr)
 * [SpEcHide](https://github.com/spechide)
-* [Mr. Vishal](https://github.com/Mrvishal2k2)
 * [AbirHasan2005](https://github.com/AbirHasan2005)
