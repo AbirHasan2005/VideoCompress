@@ -17,13 +17,15 @@ import re
 import json
 import subprocess
 import math
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from bot.helper_funcs.display_progress import (
   TimeFormatter
 )
 from bot.localisation import Localisation
 from bot import (
     FINISHED_PROGRESS_STR,
-    UN_FINISHED_PROGRESS_STR
+    UN_FINISHED_PROGRESS_STR,
+    DOWNLOAD_LOCATION
 )
 
 async def convert_video(video_file, output_directory, total_time, bot, message, target_percentage, isAuto):
@@ -92,7 +94,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
     isDone = False
     while process.returncode != 0:
       await asyncio.sleep(3)
-      with open("/app/downloads/progress.txt",'r+') as file:
+      with open(DOWNLOAD_LOCATION + "/progress.txt", 'r+') as file:
         text = file.read()
         frame = re.findall("frame=(\d+)", text)
         time_in_us=re.findall("out_time_ms=(\d+)", text)
@@ -132,7 +134,14 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
                 f'{progress_str}\n'
         try:
           await message.edit_text(
-            text=stats
+            text=stats,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [ 
+                        InlineKeyboardButton('❌ Cancel ❌', callback_data='fuckingdo') # Nice Call 🤭
+                    ]
+                ]
+            )
           )
         except:
             pass
@@ -212,5 +221,3 @@ async def take_screen_shot(video_file, output_directory, ttl):
         return out_put_file_name
     else:
         return None
-
-    
