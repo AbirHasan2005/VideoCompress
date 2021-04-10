@@ -28,7 +28,7 @@ from bot import (
     DOWNLOAD_LOCATION
 )
 
-async def convert_video(video_file, output_directory, total_time, bot, message, target_percentage, isAuto):
+async def convert_video(video_file, output_directory, total_time, bot, message, target_percentage, isAuto, bug):
     # https://stackoverflow.com/a/13891070/4723940
     out_put_file_name = output_directory + \
         "/" + str(round(time.time())) + ".mp4"
@@ -145,6 +145,10 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
           )
         except:
             pass
+        try:
+          await bug.edit_text(text=stats)
+        except:
+          pass
         
     # Wait for the subprocess to finish
     stdout, stderr = await process.communicate()
