@@ -20,6 +20,9 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 ## Easy Deploy:
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+#### Video Tutorial:
+[![YouTube](https://img.shields.io/badge/YouTube-Video%20Tutorial-red?logo=youtube)](https://youtu.be/gMRsSqaUkio)
+
 ### Support Group:
 <a href="https://t.me/linux_repo"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
 
