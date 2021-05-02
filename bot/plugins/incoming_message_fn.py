@@ -55,6 +55,7 @@ async def incoming_start_message_f(bot, update):
         await db.add_user(update.chat.id)
     if UPDATES_CHANNEL is not None:
         message = update
+        client = bot
         try:
             user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
             if user.status == "kicked":
