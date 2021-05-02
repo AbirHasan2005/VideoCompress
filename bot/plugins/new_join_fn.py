@@ -38,10 +38,9 @@ async def help_message_f(client, message):
     if not await db.is_user_exist(message.chat.id):
         await db.add_user(message.chat.id)
     ## Force Sub ##
-    update_channel = UPDATES_CHANNEL
-    if update_channel:
+    if UPDATES_CHANNEL is not None:
         try:
-            user = await client.get_chat_member(update_channel, message.chat.id)
+            user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
             if user.status == "kicked":
                await message.reply_text(
                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
@@ -55,7 +54,7 @@ async def help_message_f(client, message):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{update_channel}")
+                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
                         ]
                     ]
                 ),
