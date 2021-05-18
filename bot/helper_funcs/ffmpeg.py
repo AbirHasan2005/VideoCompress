@@ -29,7 +29,7 @@ from bot import (
 async def convert_video(video_file, output_directory, total_time, bot, message, chan_msg):
     # https://stackoverflow.com/a/13891070/4723940
     out_put_file_name = output_directory + \
-        "/" + str(round(time.time())) + ".mkv"
+        "/" + str(round(time.time())) + ".wmv"
     progress = output_directory + "/" + "progress.txt"
     with open(progress, 'w') as f:
       pass
@@ -44,7 +44,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
       "-i",
       video_file,
       "-c:v", 
-      "libvpx-vp9",
+      "libx265",
       "-vtag",
       "hvc1",
       "-preset", 
@@ -103,7 +103,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
         if difference > 0:
           ETA = TimeFormatter(difference*1000)
         percentage = math.floor(elapsed_time * 100 / total_time)
-        progress_str = "📊 <b>Progress:</b> {0}%\n[{1}{2}] \n\n© @BotDunia | @Discovery_Updates".format(
+        progress_str = "📊 <b>Progress:</b> {0}%\n[{1}{2}] \n\n© SubhrantaNayak".format(
             round(percentage, 2),
             ''.join([FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 10))]),
             ''.join([UN_FINISHED_PROGRESS_STR for i in range(10 - math.floor(percentage / 10))])
