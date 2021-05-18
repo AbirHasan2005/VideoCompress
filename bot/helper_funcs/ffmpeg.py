@@ -48,7 +48,7 @@ async def convert_video(video_file, output_directory, total_time, bot, message, 
       "-vtag",
       "hvc1",
       "-preset", 
-      "fast",
+      "ultrafast",
       "-c:a",
       "copy",
       out_put_file_name
