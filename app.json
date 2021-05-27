@@ -68,7 +68,7 @@
     "UPDATES_CHANNEL": {
       "description": "Do Force Sub! Add your Channel username which you want to do Force Sub. Read README.md file first!",
       "value": "",
-      "required": true
+      "required": false
     }
   },
   "stack": "container"
