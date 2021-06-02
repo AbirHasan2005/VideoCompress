@@ -26,7 +26,8 @@ from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from bot.plugins.incoming_message_fn import (
     incoming_start_message_f,
     incoming_compress_message_f,
-    incoming_cancel_message_f
+    incoming_cancel_message_f,
+    incoming_video_f
 )
 
 from bot.plugins.admin import (
@@ -102,16 +103,22 @@ if __name__ == "__main__" :
     # START command
     incoming_start_message_handler = MessageHandler(
         incoming_start_message_f,
-        filters=filters.command(["start", f"start@{BOT_USERNAME}"])
+        filters=filters.command(["start", f"start@{BOT_USERNAME}"]) & filters.private
     )
     app.add_handler(incoming_start_message_handler)
     
     # COMPRESS command
     incoming_compress_message_handler = MessageHandler(
         incoming_compress_message_f,
-        filters=filters.command(["compress", f"compress@{BOT_USERNAME}"])
+        filters=filters.command(["compress", f"compress@{BOT_USERNAME}"]) & filters.private & ~filters.edited
     )
     app.add_handler(incoming_compress_message_handler)
+
+    # COMPRESS Auto
+    incoming_video_handler = MessageHandler(
+        incoming_video_f,
+        filters=filters.media & filters.private & ~filters.edited
+    )
     
     # CANCEL command
     incoming_cancel_message_handler = MessageHandler(
@@ -120,7 +127,7 @@ if __name__ == "__main__" :
     )
     app.add_handler(incoming_cancel_message_handler)
 
-    # MEMEs COMMANDs
+    # MEMEs COMMAND
     exec_message_handler = MessageHandler(
         exec_message_f,
         filters=filters.command(["exec", f"exec@{BOT_USERNAME}"]) & filters.chat(chats=AUTH_USERS)
@@ -130,7 +137,7 @@ if __name__ == "__main__" :
     # HELP command
     help_text_handler = MessageHandler(
         help_message_f,
-        filters=filters.command(["help", f"help@{BOT_USERNAME}"])
+        filters=filters.command(["help", f"help@{BOT_USERNAME}"]) & filters.private
     )
     app.add_handler(help_text_handler)
     
