@@ -6,7 +6,7 @@ class Queues:
     Q = []
     IS_BUZY = False
 
-    async def check_queue(update):
+    async def check_queue(update = None):
         from bot.helper_funcs.compress import _compress
         if Queues.IS_BUZY:
             await update.reply_text(
