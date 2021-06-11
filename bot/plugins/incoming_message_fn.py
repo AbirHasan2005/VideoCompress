@@ -20,7 +20,6 @@ from bot.localisation import Localisation
 from bot import (
     DOWNLOAD_LOCATION,
     AUTH_USERS,
-    LOG_CHANNEL,
     UPDATES_CHANNEL,
     DATABASE_URL,
     SESSION_NAME

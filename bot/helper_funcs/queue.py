@@ -1,5 +1,6 @@
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
+from bot import LOG_CHANNEL
 
 class Queues:
     Q = []
@@ -17,12 +18,6 @@ class Queues:
                         ]
                     ]
                 )
-            )
-            await bot.send_message(
-                chat_id=update.chat.id,
-                text=Localisation.FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS,
-                
-                reply_to_message_id=update.message_id
             )
         else:
             try:
