@@ -174,7 +174,7 @@ async def incoming_compress_message_f(bot, update):
     # await _compress(bot, update, isAuto, target_percentage)
     q_item = Queue_Item(bot, update, isAuto, target_percentage)
     q_item._add()
-    Queues.check_queue()
+    await Queues.check_queue()
 
 async def incoming_cancel_message_f(bot, update):
     """/cancel command"""
