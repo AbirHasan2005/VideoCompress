@@ -27,7 +27,6 @@ class Queue_Item:
     def _add(self):
         try:
             Queues.Q.append(self)
-            Queues.check_queue()
             return 1
         except Exception as e:
             print(e)
