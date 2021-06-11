@@ -35,6 +35,10 @@ from bot.helper_funcs.display_progress import (
     TimeFormatter
 )
 from bot.helper_funcs.compress import _compress
+from bot.helper_funcs.queue import (
+    Queues,
+    Queue_Item
+)
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
@@ -167,7 +171,10 @@ async def incoming_compress_message_f(bot, update):
             pass
     else:
         isAuto = True
-    await _compress(bot, update, isAuto, target_percentage)
+    # await _compress(bot, update, isAuto, target_percentage)
+    q_item = Queue_Item(bot, update, isAuto, target_percentage)
+    q_item._add()
+    Queues.check_queue()
 
 async def incoming_cancel_message_f(bot, update):
     """/cancel command"""

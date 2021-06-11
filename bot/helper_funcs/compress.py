@@ -26,6 +26,10 @@ from bot.helper_funcs.display_progress import (
     progress_for_pyrogram,
     TimeFormatter
 )
+from bot.helper_funcs.queue import (
+    Queues,
+    Queue_Item
+)
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
@@ -262,3 +266,6 @@ async def _compress(bot, update, isAuto, target_percentage):
             await download_start.delete()
         except:
             pass
+
+    Queues.IS_BUZY = False
+    Queues.check_queue()
