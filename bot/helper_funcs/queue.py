@@ -1,13 +1,29 @@
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
 
 class Queues:
     Q = []
     IS_BUZY = False
 
-    async def check_queue():
+    async def check_queue(update):
         from bot.helper_funcs.compress import _compress
         if Queues.IS_BUZY:
-            pass
+            update.reply_text(
+                'Added to queue. ',
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton('Show Bot Status', url=f'https://t.me/{LOG_CHANNEL}')
+                        ]
+                    ]
+                )
+            )
+            await bot.send_message(
+                chat_id=update.chat.id,
+                text=Localisation.FF_MPEG_RO_BOT_STOR_AGE_ALREADY_EXISTS,
+                
+                reply_to_message_id=update.message_id
+            )
         else:
             try:
                 q = Queues.Q.pop(0)
