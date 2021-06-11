@@ -167,7 +167,7 @@ async def incoming_compress_message_f(bot, update):
             pass
     else:
         isAuto = True
-    _compress(bot, update, isAuto, target_percentage)
+    await _compress(bot, update, isAuto, target_percentage)
 
 async def incoming_cancel_message_f(bot, update):
     """/cancel command"""
