@@ -267,4 +267,4 @@ async def _compress(bot, update, isAuto, target_percentage):
             pass
 
     Queues.IS_BUZY = False
-    Queues.check_queue()
+    await Queues.check_queue()

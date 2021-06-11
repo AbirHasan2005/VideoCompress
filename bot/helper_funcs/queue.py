@@ -4,7 +4,7 @@ class Queues:
     Q = []
     IS_BUZY = False
 
-    def check_queue():
+    async def check_queue():
         from bot.helper_funcs.compress import _compress
         if Queues.IS_BUZY:
             pass
@@ -14,7 +14,7 @@ class Queues:
             except IndexError:
                 return
             Queues.IS_BUZY = True
-            _compress(q.bot, q.update, q.isAuto, q.target_percentage)
+            await _compress(q.bot, q.update, q.isAuto, q.target_percentage)
 
 
 class Queue_Item:
