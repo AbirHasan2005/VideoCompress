@@ -9,7 +9,7 @@ class Queues:
     async def check_queue(update):
         from bot.helper_funcs.compress import _compress
         if Queues.IS_BUZY:
-            update.reply_text(
+            await update.reply_text(
                 'Added to queue. ',
                 reply_markup=InlineKeyboardMarkup(
                     [
