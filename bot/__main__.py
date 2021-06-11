@@ -58,7 +58,7 @@ if __name__ == "__main__" :
     
     
     # getting the queue
-    Queues.Q = Database.get_queue()
+    # Queues.Q = Database.get_queue()
 
     app = Client(
         SESSION_NAME,

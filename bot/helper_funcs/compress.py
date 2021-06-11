@@ -267,7 +267,6 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
             pass
 
     Queues.Q.pop(0)
-    Database.update_queue(Queues.Q)
     print('Updated Queue')
     Queues.IS_BUZY = False 
     await Queues.check_queue() # maybe add property instead
