@@ -11,7 +11,6 @@ import time
 
 
 from bot.config import Config
-from bot.helper_funcs.queue import Queues
 
 # TODO: is there a better way?
 SESSION_NAME = Config.SESSION_NAME
@@ -41,8 +40,7 @@ if os.path.exists(LOG_FILE_ZZGEVC):
     with open(LOG_FILE_ZZGEVC, "r+") as f_d:
         f_d.truncate(0)
 
-# getting the queue
-Queues.Q = Database.get_queue()
+
 
 # the logging things
 logging.basicConfig(
