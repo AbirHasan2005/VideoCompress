@@ -80,7 +80,7 @@ async def help_message_f(client, message):
                     InlineKeyboardButton('Support Group', url='https://t.me/naija_bestz')
                 ],
                 [
-                    InlineKeyboardButton('Designer + AbirHasan2005', url='https://t.me/Davoe-D'), # Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
+                    InlineKeyboardButton('Designer + AbirHasan2005', url='https://t.me/BestzBrothers'), # Bloody Thief, Don't Become a Developer by Stealing other's Codes & Hard Works!
                     InlineKeyboardButton('Source Code', url='https://github.com/Davoe-D/VideoCompress') # Must Give us Credits!
                 ]
             ]
