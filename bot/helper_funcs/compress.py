@@ -39,7 +39,7 @@ from bot.helper_funcs.utils import (
 db = Database(DATABASE_URL, SESSION_NAME)
 broadcast_ids = {}
 
-async def _compress(bot, update, isAuto, target_percentage):
+async def _compress(bot, update, isAuto, target_percentage): # i dont think i changed anything here except the last 2 lines
     user_file = str(update.from_user.id) + ".FFMpegRoBot.mkv"
     saved_file_path = DOWNLOAD_LOCATION + "/" + user_file
     LOGGER.info(saved_file_path)
@@ -266,5 +266,8 @@ async def _compress(bot, update, isAuto, target_percentage):
         except:
             pass
 
-    Queues.IS_BUZY = False
-    await Queues.check_queue()
+    Queues.Q.pop(0)
+    Database.update_queue(Queues.Q)
+    print('Updated Queue')
+    Queues.IS_BUZY = False 
+    await Queues.check_queue() # maybe add property instead
