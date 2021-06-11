@@ -27,8 +27,7 @@ from bot.helper_funcs.display_progress import (
     TimeFormatter
 )
 from bot.helper_funcs.queue import (
-    Queues,
-    Queue_Item
+    Queues
 )
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message

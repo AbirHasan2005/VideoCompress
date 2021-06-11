@@ -1,10 +1,11 @@
-from bot.helper_funcs.compress import _compress
+
 
 class Queues:
     Q = []
     IS_BUZY = False
 
     def check_queue(self):
+        from bot.helper_funcs.compress import _compress
         if self.IS_BUZY:
             pass
         else:
