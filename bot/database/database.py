@@ -9,6 +9,7 @@ class Database:
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
+        self.queue_col = self.db['queue']
     
     
     def new_user(self, id):
@@ -80,3 +81,13 @@ class Database:
     
     async def delete_user(self, user_id):
         await self.col.delete_many({'id': int(user_id)})
+
+    async def update_queue(self, Q):
+        doc = {
+            'item': 'queue',
+            'q': Q
+        }
+        self.queue_col.update_one({'item': 'queue'}, {'$set': {'q': Q}})
+    
+    async def get_queue(self):
+        doc = self.queue_col.find_one({'item': 'queue'})

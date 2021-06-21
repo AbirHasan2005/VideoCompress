@@ -10,15 +10,15 @@ from bot import (
     API_HASH,
     AUTH_USERS,
     DOWNLOAD_LOCATION,
-    LOGGER,
     TG_BOT_TOKEN,
     BOT_USERNAME,
-    SESSION_NAME,
-    DATABASE_URL
+    SESSION_NAME
 )
 from bot.plugins.new_join_fn import (	
     help_message_f	
 )
+from bot.database.database import Database
+
 
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
@@ -48,13 +48,18 @@ from bot.plugins.status_message_fn import (
 
 from bot.commands import Command
 from bot.plugins.call_back_button_handler import button
+from bot.helper_funcs.queue import Queues
+
 
 if __name__ == "__main__" :
     # create download directory, if not exist
     if not os.path.isdir(DOWNLOAD_LOCATION):
         os.makedirs(DOWNLOAD_LOCATION)
-    #
     
+    
+    # getting the queue
+    # Queues.Q = Database.get_queue()
+
     app = Client(
         SESSION_NAME,
         bot_token=TG_BOT_TOKEN,
