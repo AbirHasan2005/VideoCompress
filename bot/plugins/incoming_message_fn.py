@@ -1,21 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K / Akshay C / @AbirHasan2005
+# (c) Shrimadhav U K / Akshay C / @AbirHasan2005 / @ballicipluck
 
-# the logging things
-
-import datetime
 import logging
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-LOGGER = logging.getLogger(__name__)
-
 from bot.database import Database
-import os, time, json
+import os
 from bot.localisation import Localisation
 from bot import (
     DOWNLOAD_LOCATION,
@@ -24,33 +13,28 @@ from bot import (
     DATABASE_URL,
     SESSION_NAME
 )
-from bot.helper_funcs.ffmpeg import (
-    convert_video,
-    media_info,
-    take_screen_shot
-)
-from bot.helper_funcs.display_progress import (
-    progress_for_pyrogram,
-    TimeFormatter
-)
-from bot.helper_funcs.compress import _compress
 from bot.helper_funcs.queue import (
     Queues,
     Queue_Item
 )
-
+from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
-
 from bot.helper_funcs.utils import (
     delete_downloads
 )
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+LOGGER = logging.getLogger(__name__)
 db = Database(DATABASE_URL, SESSION_NAME)
 broadcast_ids = {}
 
 
-async def incoming_start_message_f(bot, update):
+async def incoming_start_message_f(bot: Client, update: Message):
     """/start command"""
     if not await db.is_user_exist(update.chat.id):
         await db.add_user(update.chat.id)
@@ -170,15 +154,15 @@ async def incoming_compress_message_f(bot, update):
             pass
     else:
         isAuto = True
-    # await _compress(bot, update, isAuto, target_percentage)
     q_item = Queue_Item(bot, update, isAuto, target_percentage)
     await Queues.check_queue(update)
 
-async def incoming_cancel_message_f(bot, update):
+
+async def incoming_cancel_message_f(bot: Client, update: Message):
     """/cancel command"""
     if update.from_user.id not in AUTH_USERS:
         try:
-            await update.message.delete()
+            await update.delete()
         except:
             pass
         return
@@ -186,9 +170,8 @@ async def incoming_cancel_message_f(bot, update):
     status = DOWNLOAD_LOCATION + "/status.json"
     if os.path.exists(status):
         inline_keyboard = []
-        ikeyboard = []
-        ikeyboard.append(InlineKeyboardButton("Yes 🚫", callback_data=("fuckingdo").encode("UTF-8")))
-        ikeyboard.append(InlineKeyboardButton("No 🤗", callback_data=("fuckoff").encode("UTF-8")))
+        ikeyboard = [InlineKeyboardButton("Yes 🚫", callback_data=("fuckingdo").encode("UTF-8")),
+                     InlineKeyboardButton("No 🤗", callback_data=("fuckoff").encode("UTF-8"))]
         inline_keyboard.append(ikeyboard)
         reply_markup = InlineKeyboardMarkup(inline_keyboard)
         await update.reply_text("Are you sure? 🚫 This will stop the compression!", reply_markup=reply_markup,
@@ -202,7 +185,7 @@ async def incoming_cancel_message_f(bot, update):
         )
 
 
-async def incoming_video_f(bot, update: Message):
+async def incoming_video_f(bot: Client, update: Message):
     if not await db.is_user_exist(update.chat.id):
         await db.add_user(update.chat.id)
     if UPDATES_CHANNEL is not None:
@@ -239,7 +222,8 @@ async def incoming_video_f(bot, update: Message):
             )
             return
     media = update.video or update.document
-    if (media is None) or (media.file_name.rsplit(".", 1)[-1].startswith("mkv") is False) or (media.file_name.rsplit(".", 1)[-1].startswith("mp4") is False):
+    if (media is None) or (media.file_name.rsplit(".", 1)[-1].startswith("mkv") is False) or (
+            media.file_name.rsplit(".", 1)[-1].startswith("mp4") is False):
         try:
             await bot.send_message(
                 chat_id=update.chat.id,

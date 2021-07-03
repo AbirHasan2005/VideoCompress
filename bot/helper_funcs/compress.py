@@ -1,19 +1,15 @@
+# (c) @AbirHasan2005 | @ballicipluck
+
+from bot.database import Database
+import os
+import time
+import json
 import datetime
 import logging
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-LOGGER = logging.getLogger(__name__)
-from bot.database import Database
-import os, time, json
 from bot.localisation import Localisation
 from bot import (
     DOWNLOAD_LOCATION,
-    AUTH_USERS,
     LOG_CHANNEL,
-    UPDATES_CHANNEL,
     DATABASE_URL,
     SESSION_NAME
 )
@@ -29,17 +25,22 @@ from bot.helper_funcs.display_progress import (
 from bot.helper_funcs.queue import (
     Queues
 )
-
+from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
-
 from bot.helper_funcs.utils import (
     delete_downloads
 )
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+LOGGER = logging.getLogger(__name__)
 db = Database(DATABASE_URL, SESSION_NAME)
 broadcast_ids = {}
 
-async def _compress(bot, update, isAuto, target_percentage): # i dont think i changed anything here except the last 2 lines
+
+async def _compress(bot: Client, update: Message, isAuto, target_percentage):
     user_file = str(update.from_user.id) + ".FFMpegRoBot.mkv"
     saved_file_path = DOWNLOAD_LOCATION + "/" + user_file
     LOGGER.info(saved_file_path)
@@ -54,7 +55,8 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
         ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
         bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
         now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
-        download_start = await bot.send_message(LOG_CHANNEL, f"**Bot Become Busy Now !!** \n\nDownload Started at `{now}`",
+        download_start = await bot.send_message(LOG_CHANNEL,
+                                                f"**Bot Become Busy Now !!** \n\nDownload Started at `{now}`",
                                                 parse_mode="markdown")
         try:
             d_start = time.time()
@@ -83,8 +85,10 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
                     await sent_message.edit_text(
                         text="Download stopped"
                     )
-                    ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
-                    bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
+                    ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime(
+                        "%d/%m/%Y, %H:%M:%S")
+                    bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime(
+                        "%d/%m/%Y, %H:%M:%S")
                     now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
                     await bot.send_message(LOG_CHANNEL,
                                            f"**Download Stopped, Bot is Free Now !!** \n\nProcess Done at `{now}`",
@@ -95,7 +99,7 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
                 delete_downloads()
                 LOGGER.info("Download stopped")
                 return
-        except (ValueError) as e:
+        except ValueError as e:
             try:
                 await sent_message.edit_text(
                     text=str(e)
@@ -136,10 +140,13 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
                 await sent_message.edit_text(
                     text="⚠️ Getting video meta data failed ⚠️"
                 )
-                ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
-                bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
+                ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime(
+                    "%d/%m/%Y, %H:%M:%S")
+                bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime(
+                    "%d/%m/%Y, %H:%M:%S")
                 now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
-                await bot.send_message(LOG_CHANNEL, f"**Download Failed, Bot is Free Now !!** \n\nProcess Done at `{now}`",
+                await bot.send_message(LOG_CHANNEL,
+                                       f"**Download Failed, Bot is Free Now !!** \n\nProcess Done at `{now}`",
                                        parse_mode="markdown")
                 await download_start.delete()
             except:
@@ -155,7 +162,8 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
         bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
         now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
         await download_start.delete()
-        compress_start = await bot.send_message(LOG_CHANNEL, f"**Compressing Video ...** \n\nProcess Started at `{now}`",
+        compress_start = await bot.send_message(LOG_CHANNEL,
+                                                f"**Compressing Video ...** \n\nProcess Started at `{now}`",
                                                 parse_mode="markdown")
         await sent_message.edit_text(
             text=Localisation.COMPRESS_START
@@ -180,7 +188,8 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
             bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
             now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
             await compress_start.delete()
-            upload_start = await bot.send_message(LOG_CHANNEL, f"**Uploading Video ...** \n\nProcess Started at `{now}`",
+            upload_start = await bot.send_message(LOG_CHANNEL,
+                                                  f"**Uploading Video ...** \n\nProcess Started at `{now}`",
                                                   parse_mode="markdown")
             await sent_message.edit_text(
                 text=Localisation.UPLOAD_START,
@@ -203,13 +212,15 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
                     u_start
                 )
             )
-            if (upload is None):
+            if upload is None:
                 try:
                     await sent_message.edit_text(
                         text="Upload stopped"
                     )
-                    ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
-                    bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
+                    ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime(
+                        "%d/%m/%Y, %H:%M:%S")
+                    bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime(
+                        "%d/%m/%Y, %H:%M:%S")
                     now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
                     await bot.send_message(LOG_CHANNEL,
                                            f"**Upload Stopped, Bot is Free Now !!** \n\nProcess Done at `{now}`",
@@ -241,8 +252,10 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
                 await sent_message.edit_text(
                     text="⚠️ Compression failed ⚠️"
                 )
-                ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
-                bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
+                ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime(
+                    "%d/%m/%Y, %H:%M:%S")
+                bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime(
+                    "%d/%m/%Y, %H:%M:%S")
                 now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
                 await bot.send_message(LOG_CHANNEL,
                                        f"**Compression Failed, Bot is Free Now !!** \n\nProcess Done at `{now}`",
@@ -268,5 +281,5 @@ async def _compress(bot, update, isAuto, target_percentage): # i dont think i ch
 
     Queues.Q.pop(0)
     print('Updated Queue')
-    Queues.IS_BUZY = False 
-    await Queues.check_queue() # maybe add property instead
+    Queues.IS_BUZY = False
+    await Queues.check_queue()

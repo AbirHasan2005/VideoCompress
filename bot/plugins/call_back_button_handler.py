@@ -12,12 +12,6 @@ import os
 import json
 import time
 from bot.localisation import Localisation
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-LOGGER = logging.getLogger(__name__)
-
 import datetime
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from bot import (
@@ -35,11 +29,16 @@ from bot.helper_funcs.display_progress import (
     TimeFormatter
 )
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+LOGGER = logging.getLogger(__name__)
+
 
 async def button(bot, update: CallbackQuery):
     cb_data = update.data
-    LOGGER.info(update.message.reply_to_message.from_user.id)
-    if (update.from_user.id == update.message.reply_to_message.from_user.id) or g:
+    if update.from_user.id == update.message.reply_to_message.from_user.id:
         print(cb_data)
         if cb_data == "fuckingdo":
             if update.from_user.id in AUTH_USERS:
@@ -61,10 +60,8 @@ async def button(bot, update: CallbackQuery):
                         pass
                     try:
                         await update.message.edit_text("🚦🚦 Last Process Stopped 🚦🚦")
-                        ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime(
-                            "%d/%m/%Y, %H:%M:%S")
-                        bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime(
-                            "%d/%m/%Y, %H:%M:%S")
+                        ist = (datetime.datetime.utcnow() + datetime.timedelta(minutes=30, hours=5)).strftime("%d/%m/%Y, %H:%M:%S")
+                        bst = (datetime.datetime.utcnow() + datetime.timedelta(minutes=00, hours=6)).strftime("%d/%m/%Y, %H:%M:%S")
                         now = f"\n{ist} (GMT+05:30)`\n`{bst} (GMT+06:00)"
                         await bot.send_message(LOG_CHANNEL, f"**Last Process Cancelled, Bot is Free Now !!** \n\nProcess Done at `{now}`", parse_mode="markdown")
                     except:
@@ -123,7 +120,7 @@ async def button(bot, update: CallbackQuery):
                         )
                     )
                     LOGGER.info(video)
-                    if (video is None):
+                    if video is None:
                         try:
                             await sent_message.edit_text(
                                 text="Download stopped"
@@ -142,7 +139,7 @@ async def button(bot, update: CallbackQuery):
                         delete_downloads()
                         LOGGER.info("Download stopped")
                         return
-                except (ValueError) as e:
+                except ValueError as e:
                     try:
                         await sent_message.edit_text(
                             text=str(e)

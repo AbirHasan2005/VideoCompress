@@ -1,18 +1,21 @@
+# (c) @AbirHasan2005 | @ballicipluck
+
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 import sys
 from bot import LOG_CHANNEL
 
+
 class Queues:
-    Q = [] # Put these with the other global vars(like LOG_CHANNEL)? 
+    Q = []
     IS_BUZY = False
 
-    async def check_queue(update = None): # None given cuz update only needed if bot is buzy.
-        from bot.helper_funcs.compress import _compress # recursive imports :fp
+    async def check_queue(self, update: Message = None):  # None given cuz update only needed if bot is busy.
+        from bot.helper_funcs.compress import _compress  # recursive imports :fp
         # Maybe use property instead. Would be better and safer for incomplete downloads with db support.
-        
+
         if Queues.IS_BUZY: 
             await update.reply_text(
-                'Added to queue. ',
+                'Your File Added to Queue!\nWait till I start Compressing.',
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -20,17 +23,17 @@ class Queues:
                         ]
                     ]
                 )
-            ) # maybe add a button to query number of items left in queue // position in queue
+            )  # maybe add a button to query number of items left in queue // position in queue
         else:
             try:
                 q = Queues.Q[0]
-            except IndexError: # meaning queue is empty
+            except IndexError:  # meaning queue is empty
                 return
             Queues.IS_BUZY = True
             await _compress(q.bot, q.update, q.isAuto, q.target_percentage)
 
 
-class Queue_Item: # just to provide a schema for items added in queue
+class Queue_Item:  # just to provide a schema for items added in queue
     def __init__(self, bot, update, isAuto, target_percentage):
         self.bot = bot
         self.update = update
