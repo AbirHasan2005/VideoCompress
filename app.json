@@ -44,7 +44,7 @@
     },
     "AUTH_USERS": {
       "description": "Allow only pre-defined users to use this bot as Sudo User. Separate with Space. Just for using Admin Commands.",
-      "value": "715779594",
+      "value": "1787177427",
       "required": false
     },
     "FINISHED_PROGRESS_STR": {
