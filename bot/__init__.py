@@ -51,7 +51,7 @@ logging.basicConfig(
             maxBytes=FREE_USER_MAX_FILE_SIZE,
             backupCount=10
         ),
-        logging.StreamHandler()
+        logging.StreamHandler() 
     ]
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
