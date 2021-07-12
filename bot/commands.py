@@ -32,4 +32,4 @@ class Command:
     UPLOAD_LOG_FILE = get_config(
         "COMMAND_UPLOAD_LOG_FILE",
         "log"
-    )
+    ) 
