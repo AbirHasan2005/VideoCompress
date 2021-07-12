@@ -12,4 +12,4 @@ def get_config(name: str, d_v=None, should_prompt=False):
         except EOFError:
             val = d_v
         print("\n")
-    return val
+    return val 
