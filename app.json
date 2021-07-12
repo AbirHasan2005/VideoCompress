@@ -1,7 +1,7 @@
 {
   "name": "VideoCompressBot",
   "description": "Telegram's best Video Compress Bot",
-  "logo": "https://telegra.ph/file/b687febf32e4d583fb1d4.jpg",
+  "logo": "https://telegra.ph/personal-robot-07-12",
   "keywords": [
     "telegram",
     "best",
@@ -9,9 +9,9 @@
     "compress",
     "bot"
   ],
-  "success_url": "https://t.me/linux_repo",
-  "website": "https://t.me/Discovery_Updates",
-  "repository": "https://github.com/AbirHasan2005/VideoCompress",
+  "success_url": "https://t.me/agoribotz",
+  "website": "https://t.me/agorihome",
+  "repository": "https://github.com/Agoriadmin/VideoCompress",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable VARs when in ENV mode",
@@ -19,11 +19,11 @@
     },
     "SESSION_NAME": {
       "description": "Keep this default",
-      "value": "AHCompressBot",
+      "value": "AGCompressBot",
       "required": true
     },
     "DATABASE_URL": {
-      "description": "Your MongoDB URL for Database. Ask in Support Group: https://t.me/linux_repo",
+      "description": "Your MongoDB URL for Database. Ask in Support Group: https://t.me/agoribotz",
       "value": "",
       "required": true
     },
@@ -61,7 +61,7 @@
       "required": true
     },
     "LOG_CHANNEL": {
-      "description": "Your Bot's Log Channel's Username. For Help ask in @linux_repo",
+      "description": "Your Bot's Log Channel's Username. For Help ask in @agoribotz",
       "value": "",
       "required": true
     },
