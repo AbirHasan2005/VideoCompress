@@ -1,10 +1,10 @@
-# (c) @AbirHasan2005
+# (c) @agoriadmin
 
 from bot.get_cfg import get_config
 
 class Config(object):
     # You can keep this default
-    SESSION_NAME = get_config("SESSION_NAME", "AHCompressorBot")
+    SESSION_NAME = get_config("SESSION_NAME", "AGCompressorBot")
     # Put MongoDB URL
     DATABASE_URL = get_config("DATABASE_URL", "")
     # get a token from @BotFather
