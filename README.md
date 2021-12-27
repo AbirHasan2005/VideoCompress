@@ -22,13 +22,13 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 	- Can Ban-Unban Manually
 	- Can see numbers users in DB
 
-* If you need more help to Deploy Feel Free to ask in [Support Group](https://t.me/linux_repo).
+* If you need more help to Deploy Feel Free to ask in [Support Group](https://t.me/filmeh_gp).
 
 ### Demo Bot:
-<a href="https://t.me/VidCom_Robot"><img src="https://img.shields.io/badge/Demo-Telegram%20Bot-blue.svg?logo=telegram"></a>
+<a href="https://t.me/Filmeh_CompressBot"><img src="https://img.shields.io/badge/Demo-Telegram%20Bot-blue.svg?logo=telegram"></a>
 
 ### Demo Logs Channel:
-<a href="https://t.me/VideoCompressLogs"><img src="https://img.shields.io/badge/Demo-Bot%20Logs%20Channel-blue.svg?logo=telegram"></a>
+<a href="https://t.me/Filmeh_compress"><img src="https://img.shields.io/badge/Demo-Bot%20Logs%20Channel-blue.svg?logo=telegram"></a>
 
 ## Easy Deploy:
 <p><a href="https://heroku.com/deploy"> <img src="https://img.shields.io/badge/Deploy%20To%20Heroku-blueviolet?style=for-the-badge&logo=heroku" width="200""/></a></p>
@@ -37,12 +37,12 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 [![YouTube](https://img.shields.io/badge/YouTube-Video%20Tutorial-red?logo=youtube)](https://youtu.be/gMRsSqaUkio)
 
 ### Support Group:
-<a href="https://t.me/DevsZone"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
+<a href="https://t.me/filmeh_gp"><img src="https://img.shields.io/badge/Telegram-Join%20Telegram%20Group-blue.svg?logo=telegram"></a>
 
 ## Required Configs:
 * `SESSION_NAME` - Any name of session. Better keep default.
 * `TG_BOT_TOKEN` - Get this from [@BotFather](https://t.me/BotFather)
-* `LOG_CHANNEL` - Put Your Bot's Logs Channel's Username. For Help ask in [Support Group](https://t.me/linux_repo).
+* `LOG_CHANNEL` - Put Your Bot's Logs Channel's Username. For Help ask in [Support Group](https://t.me/filmeh_gp).
 * `BOT_USERNAME` - Your Bot's Username which you send to [@BotFather](https://t.me/BotFather) while creating Bot. ***(Without `@` Before Username!!)***
 * `APP_ID` - Get this from my.telegram.org
 * `API_HASH` - Get this from my.telegram.org
@@ -50,7 +50,7 @@ A Telegram Video Compressor Bot By [@AbirHasan2005](https://t.me/linux_repo). **
 * `AUTH_USERS` - Put your ID & other Sudo Users IDs. Separate with **Space**. Just for using [Admin Commands](https://github.com/AbirHasan2005/VideoCompress#admin-commands).
 
 ## Optional Configs:
-* `UPDATES_CHANNEL` - Put your Channel Username which you want to do Force Sub. But bot should be Admin in that channel. If got any error or not understand anything than ask in [Support Group](https://t.me/linux_repo).
+* `UPDATES_CHANNEL` - Put your Channel Username which you want to do Force Sub. But bot should be Admin in that channel. If got any error or not understand anything than ask in [Support Group](https://t.me/filmeh_Gp).
 * `COMMAND_EXEC` - `/exec` Command Handler.
 * `COMMAND_STATUS` - `/status` Command Handler.
 * `COMMAND_CANCEL` - `/cancel` Command Handler.
