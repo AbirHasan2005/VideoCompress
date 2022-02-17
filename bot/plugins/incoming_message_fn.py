@@ -75,7 +75,7 @@ async def incoming_start_message_f(bot, update):
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
-                            InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                            InlineKeyboardButton("Kanalga qo'shiling", url=f"https://t.me/{UPDATES_CHANNEL}")
                         ]
                     ]
                 ),
