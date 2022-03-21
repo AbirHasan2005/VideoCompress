@@ -91,6 +91,6 @@ exec - EXEC 🙄
 </p>
 
 ### Credits:
-* [Jijinr](https://github.com/Jijinr)
+* [Jijinr](https://github.com/amitnara126)
 * [SpEcHide](https://github.com/spechide)
-* [AbirHasan2005](https://github.com/AbirHasan2005)
+* [AbirHasan2005](https://github.com/amitnara126)
