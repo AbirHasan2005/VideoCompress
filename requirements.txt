@@ -3,7 +3,7 @@ Pillow
 psutil
 hachoir
 tgcrypto
-pyrogram
+pyrogram==1.4.15
 motor
 https://github.com/Tinche/aiofiles/archive/master.zip
 dnspython
